@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mente e Corpo, Guia de Saúde e Vida Espiritual</title>
+<meta name="description" content="Seu guia diário para corpo, mente e espírito num só lugar. Sabedoria bíblica, rotina da manhã, alimentação consciente, chás, receitas e treino. Funciona offline e sem anúncios.">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!--
+     MENTE E CORPO - PAGINA DE VENDAS (Meta Ads + TikTok)
+     Design System: Spotify (dark)
+     Como usar:
+     1. Troque todo texto entre [COLCHETES] pelos dados reais.
+     2. Coloque o link do checkout em TODO href do tipo #COMPRAR.
+     3. Cole o Pixel do Facebook e o do TikTok no cabecalho.
+     4. Preco e garantia estao marcados com comentarios EDITAR no codigo.
+-->
+
+<!-- ===== Meta Pixel (Facebook) ===== -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1095252006715140');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1095252006715140&ev=PageView&noscript=1"/></noscript>
+<!-- ===== Fim do Meta Pixel ===== -->
+
+<!-- >>> COLE AQUI O PIXEL DO TIKTOK (opcional) <<< -->
+<!-- ATENÇÃO: o Token da API de Conversão NÃO vai aqui. Ele é secreto e
+     deve ser configurado só no servidor / no painel do seu checkout. -->
+
+<style>
+  :root{
+    --bg:#121212; --surface:#181818; --mid:#1f1f1f; --card:#252525;
+    --green:#1ed760; --green-hover:#1fdf64; --white:#ffffff;
+    --silver:#b3b3b3; --muted:#7c7c7c;
+    --neg:#f3727f; --warn:#ffa42b; --info:#539df5;
+    --border:#4d4d4d; --light-border:#7c7c7c;
+    --shadow-heavy:rgba(0,0,0,.5) 0 8px 24px;
+    --shadow-med:rgba(0,0,0,.3) 0 8px 8px;
+    --font:'Inter',Helvetica Neue,helvetica,arial,sans-serif;
+    --maxw:620px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--white);font-family:var(--font);
+    font-size:15px;font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  h1,h2,h3{line-height:1.25;font-weight:700}
+  h1{font-size:28px}
+  h2{font-size:22px}
+  h3{font-size:16px}
+  p{margin:0 0 1em;color:var(--silver)}
+  strong{color:var(--white);font-weight:700}
+  .center{text-align:center}
+  .small{font-size:13px}
+  .green{color:var(--green)}
+
+  /* ---- Botões (pill Spotify) ---- */
+  .btn-green{
+    display:block;width:100%;text-align:center;text-decoration:none;cursor:pointer;border:none;
+    background:var(--green);color:#000;font-weight:800;font-size:15px;
+    padding:16px 24px;border-radius:500px;
+    text-transform:uppercase;letter-spacing:1.4px;line-height:1.3;
+    transition:transform .1s ease,background .15s ease;
+    box-shadow:0 8px 24px rgba(30,215,96,.25);
+  }
+  .btn-green:hover{background:var(--green-hover);transform:scale(1.02)}
+  .btn-green:active{transform:scale(.99)}
+  .btn-green .sub{display:block;font-size:11px;font-weight:600;opacity:.75;margin-top:4px;letter-spacing:.4px;text-transform:none}
+  .cta-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+
+  /* ---- Seções ---- */
+  section{padding:44px 0}
+  .divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0}
+  .surface{background:var(--surface)}
+  .rule{width:40px;height:4px;background:var(--green);border-radius:4px;margin:0 auto 20px}
+  .label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.4px;color:var(--silver);margin-bottom:8px;text-align:center}
+
+  /* ---- Hero ---- */
+  .hero{padding:48px 0 52px;text-align:center;background:radial-gradient(120% 90% at 50% 0%,#1b1b1b 0%,var(--bg) 60%)}
+  .tag{
+    display:inline-block;background:rgba(30,215,96,.12);color:var(--green);
+    font-size:10.5px;font-weight:700;padding:6px 14px;border-radius:500px;margin-bottom:20px;
+    letter-spacing:1.4px;text-transform:uppercase;
+  }
+  .hero h1 span{color:var(--green)}
+  .hero-sub{font-size:16px;color:var(--silver);max-width:480px;margin:14px auto 28px}
+  .hero-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+  .hero-mockup{margin-top:30px;display:flex;justify-content:center;position:relative}
+  .hero-mockup::before{content:"";position:absolute;top:50%;left:50%;width:78%;height:72%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(30,215,96,.25),transparent 68%);filter:blur(34px);z-index:0;pointer-events:none}
+  .hero-mockup img{position:relative;z-index:1;width:100%;max-width:390px;height:auto;border-radius:16px;box-shadow:var(--shadow-heavy);animation:floaty 4.5s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @media (prefers-reduced-motion:reduce){.hero-mockup img{animation:none}}
+  .hero-cta{max-width:420px;margin:24px auto 0}
+  .badge{
+    background:var(--mid);border-radius:500px;padding:7px 14px;font-size:12px;font-weight:600;
+    color:var(--silver);display:flex;align-items:center;gap:6px;
+  }
+  .badge b{color:var(--green);font-weight:700}
+
+  /* ---- Benefícios (check) ---- */
+  .benef{list-style:none}
+  .benef li{
+    background:var(--surface);border-radius:8px;padding:16px 16px 16px 50px;margin-bottom:12px;position:relative;
+  }
+  .benef li::before{
+    content:"✓";position:absolute;left:16px;top:16px;width:24px;height:24px;
+    background:var(--green);color:#000;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;
+  }
+  .benef li b{display:block;margin-bottom:2px;color:var(--white)}
+  .benef li{color:var(--silver);font-size:14px}
+
+  /* ---- Dor ---- */
+  .dor{list-style:none;margin-top:20px}
+  .dor li{padding:11px 0 11px 30px;position:relative;color:var(--silver);border-bottom:1px solid rgba(255,255,255,.06)}
+  .dor li::before{content:"✕";position:absolute;left:2px;top:11px;color:var(--neg);font-weight:700}
+  .dor li:last-child{border-bottom:none}
+
+  /* ---- Pilares ---- */
+  .pilar{background:var(--surface);border-radius:8px;padding:22px;margin-bottom:14px;transition:background .2s}
+  .pilar:hover{background:var(--card)}
+  .pilar .ico{font-size:26px;margin-bottom:8px}
+  .pilar h3{margin-bottom:8px;color:var(--white);font-size:18px}
+  .pilar ul{margin:10px 0 0;padding-left:18px}
+  .pilar ul li{margin-bottom:8px;color:var(--silver);font-size:13.5px}
+  .pilar ul li b{color:var(--white)}
+
+  /* ---- Depoimentos ---- */
+  .depo{background:var(--surface);border-radius:8px;padding:20px;margin-bottom:14px;box-shadow:var(--shadow-med)}
+  .stars{color:var(--green);font-size:15px;letter-spacing:2px;margin-bottom:10px}
+  .depo p{font-style:italic;margin-bottom:14px;color:#d8d8d8}
+  .depo .who{display:flex;align-items:center;gap:10px}
+  .depo .av{width:40px;height:40px;border-radius:50%;background:var(--mid);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--green)}
+  .depo .who b{font-size:14px;color:var(--white)}
+  .depo .who span{font-size:12px;color:var(--muted);display:block}
+  .ph{background:var(--mid);border:1px dashed var(--warn);color:var(--warn);font-size:12px;padding:8px 12px;border-radius:6px;display:inline-block;line-height:1.4}
+  .proof{background:var(--surface);border-radius:12px;padding:12px;box-shadow:var(--shadow-med);text-align:center}
+  .proof img{width:auto;max-width:100%;max-height:440px;height:auto;border-radius:8px;display:inline-block}
+  .proof .cap{font-size:12px;color:var(--silver);padding:10px 6px 2px;display:flex;align-items:center;justify-content:center;gap:6px}
+  .proof .cap b{color:var(--white)}
+  .proof .cap .vf{color:var(--green);font-size:13px}
+
+  /* ---- Oferta ---- */
+  .oferta{background:var(--surface);border:1px solid rgba(30,215,96,.4);border-radius:12px;padding:28px 22px;box-shadow:var(--shadow-heavy);text-align:center}
+  .oferta .de{color:var(--muted);text-decoration:line-through;font-size:16px}
+  .oferta .por{font-size:13px;color:var(--silver);margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+  .oferta .preco{font-size:52px;font-weight:800;color:var(--white);line-height:1;margin:4px 0}
+  .oferta .preco small{font-size:22px;vertical-align:top;color:var(--green)}
+  .oferta .unico{font-size:13px;color:var(--silver);margin-bottom:20px}
+  .incluso{text-align:left;max-width:360px;margin:20px auto;list-style:none}
+  .incluso li{padding:9px 0 9px 28px;position:relative;font-size:14px;color:var(--silver);border-bottom:1px solid rgba(255,255,255,.06)}
+  .incluso li::before{content:"✓";position:absolute;left:0;top:9px;color:var(--green);font-weight:800}
+  .incluso li:last-child{border-bottom:none}
+
+  /* ---- Garantia ---- */
+  .garantia{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border-radius:8px;padding:20px}
+  .garantia .seal{flex:0 0 60px;height:60px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:12px;text-align:center;line-height:1.1}
+  .garantia h3{color:var(--white);margin-bottom:4px}
+
+  /* ---- FAQ ---- */
+  details{background:var(--surface);border-radius:8px;padding:0 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:700;padding:16px 0;list-style:none;position:relative;padding-right:28px;color:var(--white)}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:4px;top:13px;font-size:22px;color:var(--green);font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{padding-bottom:16px;margin:0;color:var(--silver);font-size:14px}
+
+  /* ---- Barra fixa ---- */
+  .sticky{
+    position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:rgba(24,24,24,.96);backdrop-filter:blur(8px);
+    border-top:1px solid rgba(255,255,255,.08);padding:10px 16px;
+    display:flex;gap:12px;align-items:center;justify-content:space-between;
+  }
+  .sticky .px{font-weight:800;color:var(--white);font-size:18px;white-space:nowrap}
+  .sticky .px small{display:block;font-size:11px;color:var(--muted);font-weight:500;text-decoration:line-through}
+  .sticky a{
+    flex:1;text-align:center;text-decoration:none;background:var(--green);color:#000;
+    font-weight:800;padding:13px;border-radius:500px;font-size:14px;text-transform:uppercase;letter-spacing:1px;
+  }
+
+  footer{padding:30px 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);font-size:12px;color:var(--muted)}
+  footer a{color:var(--green);text-decoration:none}
+  .aviso{font-size:12px;color:var(--silver);background:var(--mid);border-left:3px solid var(--green);padding:12px 14px;border-radius:6px;margin-top:16px;text-align:left}
+
+  @media (max-width:768px){section{padding:36px 0}}
+
+  /* ---- Carrossel dos pilares ---- */
+  .carousel{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .car-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;align-items:stretch}
+  .car-track::-webkit-scrollbar{display:none}
+  .car-track .pilar,.car-track .bonus-card{flex:0 0 100%;scroll-snap-align:center;margin-bottom:0;display:flex;flex-direction:column}
+  .car-track .proof{flex:0 0 100%;scroll-snap-align:center;margin-bottom:0;display:block}
+  @media (min-width:560px){.car-track .pilar,.car-track .bonus-card{flex:0 0 85%}.car-track .proof{flex:0 0 58%}}
+  .car-dots{display:flex;gap:8px;justify-content:center;margin-top:18px}
+  .car-dots button{width:8px;height:8px;border-radius:50%;border:none;background:var(--mid);cursor:pointer;padding:0;transition:.25s}
+  .car-dots button.active{background:var(--green);width:22px;border-radius:4px}
+  .car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;display:none;align-items:center;justify-content:center;transition:.2s}
+  .car-arrow:hover{background:var(--green);color:#000}
+  .car-arrow.prev{left:-4px}.car-arrow.next{right:-4px}
+  .car-arrow svg{width:18px;height:18px}
+  @media (min-width:760px){.car-arrow{display:flex}}
+
+  /* ---- Cards de bônus ---- */
+  .bonus-card{background:var(--surface);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-med)}
+  .bonus-img{background:linear-gradient(135deg,#1b2a20,#141414);display:flex;align-items:center;justify-content:center;padding:16px;min-height:220px}
+  .bonus-img img{max-height:230px;width:auto;max-width:100%;border-radius:8px;object-fit:contain;display:block}
+  .bonus-info{padding:18px 20px 22px}
+  .bonus-tag{display:inline-block;background:rgba(30,215,96,.14);color:var(--green);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:500px;margin-bottom:10px}
+  .bonus-info h3{color:var(--white);font-size:19px;margin-bottom:6px}
+  .bonus-info p{color:var(--silver);font-size:14px;margin:0}
+  .bonus-price{color:var(--green);font-size:13px;font-weight:700;margin-top:10px}
+  .bonus-price s{color:var(--muted);font-weight:400}
+
+  /* ---- Passos "Como você recebe" ---- */
+  .steps{display:grid;grid-template-columns:1fr;gap:14px;margin-top:8px}
+  @media (min-width:620px){.steps{grid-template-columns:repeat(3,1fr)}}
+  .step{background:var(--surface);border-radius:12px;padding:24px 20px;text-align:center}
+  .step-num{width:46px;height:46px;border-radius:50%;background:rgba(30,215,96,.14);color:var(--green);font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .step h3{color:var(--white);font-size:17px;margin-bottom:8px}
+  .step p{color:var(--silver);font-size:14px;margin:0}
+  .steps-cta{max-width:420px;margin:28px auto 0}
+
+  /* ---- Showcase "Seu app em ação" ---- */
+  .showcase{position:relative;background:radial-gradient(120% 100% at 50% 0%,#17241c 0%,var(--bg) 60%);padding:56px 0;text-align:center;overflow:hidden}
+  .showcase::after{content:"";position:absolute;top:140px;left:50%;transform:translateX(-50%);width:min(560px,92%);height:280px;background:radial-gradient(ellipse at center,rgba(30,215,96,.20),transparent 70%);filter:blur(42px);z-index:0;pointer-events:none}
+  .showcase .wrap,.showcase .carousel,.showcase .car-dots,.showcase .pills{position:relative;z-index:1}
+  .showcase .carousel{margin-top:30px}
+  .showcase .eyebrow{color:var(--green);font-weight:700;letter-spacing:2.4px;text-transform:uppercase;font-size:11px}
+  .showcase h2{margin:10px 0 6px}
+  .showcase .lede{color:var(--silver);font-size:15px;max-width:460px;margin:0 auto}
+  .car-track .app-slide{flex:0 0 100%;scroll-snap-align:center;display:flex;justify-content:center;margin-bottom:0;padding:6px 0}
+  .phone{width:230px;max-width:72vw;background:#0b0b0b;border:1px solid rgba(255,255,255,.12);border-radius:30px;padding:7px;box-shadow:0 30px 60px -28px rgba(0,0,0,.8);position:relative}
+  .phone::before{content:"";position:absolute;top:13px;left:50%;transform:translateX(-50%);width:44px;height:5px;background:#000;border-radius:5px;z-index:2}
+  .screen{background:#1d1d1d;border-radius:24px;overflow:hidden;aspect-ratio:9/19.5}
+  .screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;list-style:none;padding:0 20px;margin:28px 0 0}
+  .pills li{border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--silver)}
+  .pills li::before{content:"●";color:var(--green);margin-right:8px;font-size:9px;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<!-- ======================= HERO ======================= -->
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">Corpo · Mente · Espírito</span>
+    <h1>Um guia diário para <span>cuidar do corpo, acalmar a mente e fortalecer a fé</span>, num só app</h1>
+    <p class="hero-sub">Sabedoria bíblica, rotina da manhã, alimentação consciente, chás, receitas e treino, funciona offline, sem anúncios, e seus dados ficam só no seu aparelho</p>
+
+    <div class="hero-badges">
+      <span class="badge"><b>Offline</b></span>
+      <span class="badge"><b>Sem anúncios</b></span>
+      <span class="badge"><b>Dados só no aparelho</b></span>
+      <span class="badge"><b>Acesso vitalício</b></span>
+    </div>
+
+    <div class="hero-mockup">
+      <img src="assets/mockup-app.png" alt="App Mente e Corpo no celular e no computador" loading="lazy">
+    </div>
+
+    <a href="#bonus" class="btn-green hero-cta">Quero ver a oferta</a>
+  </div>
+</header>
+
+<hr class="divider">
+
+<!-- ======================= DOR ======================= -->
+<section>
+  <div class="wrap">
+    <div class="rule"></div>
+    <h2 class="center">Você tenta cuidar de tudo e sente que falta juntar as peças?</h2>
+    <p class="center">Um app pra dieta, outro pra meditação, um caderno pra oração, vídeos soltos de treino, no fim cansa e nada vira hábito de verdade</p>
+    <ul class="dor">
+      <li>Começa a rotina da manhã animada e, no terceiro dia, bate a soneca e a vontade some</li>
+      <li>Quer comer melhor, mas se perde em dieta restritiva e promessa de milagre</li>
+      <li>Sente ansiedade ou desânimo e não acha um momento de paz no meio da correria</li>
+      <li>Procura uma rotina com propósito e fé, e não só mais uma lista de tarefas</li>
+    </ul>
+    <p class="center" style="margin-top:22px"><strong>E se tudo isso morasse num lugar só, simples, pra usar todo dia?</strong></p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= SOLUÇÃO ======================= -->
+<section class="surface">
+  <div class="wrap">
+    <div class="rule"></div>
+    <h2 class="center">Mente e Corpo reúne corpo, mente e espírito num roteiro diário</h2>
+    <p class="center">A maioria dos apps cuida só de uma coisa, este foi feito pra cuidar das três, com conteúdo prático, não só leitura: timers, modo cozinha, lista de compras e registro de treino</p>
+    <ul class="benef" style="margin-top:8px">
+      <li><b>Um roteiro pronto pra cada dia</b>Uma prática, uma dica de saúde e um chá, você abre e já sabe o que fazer</li>
+      <li><b>Hábito guiado, não força de vontade</b>Desafio de 30 dias com calendário visual e contagem de dias seguidos</li>
+      <li><b>Responsável com você</b>Os chás vêm com contraindicações e o app não promete milagre</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= SHOWCASE: SEU APP EM AÇÃO ======================= -->
+<section class="showcase" id="app">
+  <div class="wrap">
+    <span class="eyebrow">Como funciona</span>
+    <h2>Seu app em ação</h2>
+    <p class="lede">Rápido de usar, bonito de acompanhar, tudo no seu celular, até offline</p>
+  </div>
+  <div class="carousel">
+    <button class="car-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <div class="car-track" id="appTrack">
+      <div class="app-slide"><div class="phone"><div class="screen"><img src="assets/tela1.png" alt="Tela inicial do app com roteiro do dia e provérbio" loading="lazy"></div></div></div>
+      <div class="app-slide"><div class="phone"><div class="screen"><img src="assets/tela2.png" alt="Seção de saúde, nutrição, calculadoras e treino" loading="lazy"></div></div></div>
+      <div class="app-slide"><div class="phone"><div class="screen"><img src="assets/tela3.png" alt="Área de alimentação com receitas, chás e água do dia" loading="lazy"></div></div></div>
+    </div>
+    <button class="car-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  </div>
+  <div class="car-dots" id="appDots"></div>
+  <ul class="pills">
+    <li>Rotina da manhã</li>
+    <li>Receitas &amp; chás</li>
+    <li>Treino</li>
+    <li>Diário &amp; evolução</li>
+  </ul>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= PILARES ======================= -->
+<section>
+  <div class="wrap">
+    <div class="rule"></div>
+    <div class="label">O que você recebe</div>
+    <h2 class="center" style="margin-bottom:20px">Quatro pilares + ferramentas</h2>
+  </div>
+
+  <div class="carousel">
+    <button class="car-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <div class="car-track" id="pilarTrack">
+      <div class="pilar">
+        <h3>Espírito e Mente</h3>
+        <ul>
+          <li><b>Sabedoria de Salomão</b> 12 princípios atemporais com reflexões pra aplicar no mesmo dia (cerca de 40 min)</li>
+          <li><b>Rotina da Manhã Transformadora</b> acordar com propósito e vencer a soneca com 6 práticas (cerca de 30 min)</li>
+          <li><b>Desafio de 30 dias</b> calendário visual, dias seguidos e as 3 fases da mudança</li>
+          <li><b>Meu Diário da Manhã</b> gratidão, afirmações e intenções, salvo só no seu aparelho</li>
+          <li><b>Provérbio do dia</b> um versículo novo toda manhã</li>
+        </ul>
+      </div>
+
+      <div class="pilar">
+        <h3>Saúde e Nutrição</h3>
+        <ul>
+          <li><b>Alimentação Inteligente</b> escolhas conscientes, ler rótulos, macros e índice glicêmico (cerca de 35 min)</li>
+          <li><b>Alimentação para Hipertrofia</b> proteína em cada refeição e carbo na hora certa (cerca de 25 min)</li>
+          <li><b>Receitas Saudáveis</b> doces e salgadas, com modo cozinha, timer e lista de compras</li>
+          <li><b>Chás Naturais</b> 10 chás com benefícios, timer de infusão e avisos de contraindicação</li>
+          <li><b>Beleza Feminina 40+</b> shots, sucos e shakes pra pele, energia e equilíbrio</li>
+          <li><b>Alimentação e cuidado durante o tratamento</b> apoio gentil pra quem passa por tratamento oncológico e seus familiares</li>
+        </ul>
+      </div>
+
+      <div class="pilar">
+        <h3>Treino</h3>
+        <ul>
+          <li><b>Biblioteca de exercícios</b> academia e casa, com filtro por músculo, equipamento e nível, passo a passo</li>
+          <li><b>Meu treino de hoje</b> registre séries, repetições e carga, funcionando offline</li>
+        </ul>
+      </div>
+
+      <div class="pilar">
+        <h3>Ferramentas + Acompanhamento</h3>
+        <ul>
+          <li><b>Calculadora de TMB</b> seu metabolismo e sua meta de calorias</li>
+          <li><b>Calorias dos alimentos</b> soma as calorias das suas refeições</li>
+          <li><b>Sua jornada</b> progresso geral de leitura e contador de dias</li>
+          <li><b>Blog e Depoimentos</b> reflexões e histórias reais da comunidade</li>
+        </ul>
+      </div>
+    </div>
+    <button class="car-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  </div>
+  <div class="car-dots" id="pilarDots"></div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= CTA INTERMEDIÁRIO ======================= -->
+<section class="surface" style="text-align:center">
+  <div class="wrap">
+    <h2>Pronto pra começar sua rotina com propósito?</h2>
+    <p>Acesso imediato, no seu ritmo, direto do seu celular</p>
+    <a href="#COMPRAR" class="btn-green" onclick="track()" style="max-width:420px;margin:0 auto">Começar agora
+      <span class="sub">Pagamento único · Acesso vitalício</span>
+    </a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= DEPOIMENTOS ======================= -->
+<section>
+  <div class="wrap">
+    <div class="rule"></div>
+    <h2 class="center">Quem usa, recomenda</h2>
+    <p class="center" style="margin-bottom:22px">Mensagens reais de pessoas que já usam o Mente e Corpo no dia a dia</p>
+
+  </div>
+
+  <div class="carousel">
+    <button class="car-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <div class="car-track" id="proofTrack">
+      <div class="proof">
+        <img src="assets/prova01.webp" alt="Mensagem de Maria sobre o app Mente e Corpo" loading="lazy">
+        <div class="cap"><b>Maria</b> <span class="vf">✓ cliente</span></div>
+      </div>
+      <div class="proof">
+        <img src="assets/prova02.webp" alt="Mensagem de Rafaela sobre as receitas e chás do app" loading="lazy">
+        <div class="cap"><b>Rafaela</b> <span class="vf">✓ cliente</span></div>
+      </div>
+    </div>
+    <button class="car-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  </div>
+  <div class="car-dots" id="proofDots"></div>
+
+  <div class="wrap">
+    <p class="small center" style="color:var(--muted);margin-top:16px">Tem mais prints? Vá somando aqui, quanto mais prova real, maior a conversão</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= DIFERENCIAIS ======================= -->
+<section class="surface">
+  <div class="wrap">
+    <div class="rule"></div>
+    <h2 class="center">Por que escolher o Mente e Corpo</h2>
+    <ul class="benef" style="margin-top:20px">
+      <li><b>Corpo, mente e espírito juntos</b>A maioria dos apps cuida só de um, aqui os três conversam</li>
+      <li><b>Funciona offline</b>Use em qualquer lugar, com ou sem internet</li>
+      <li><b>Privacidade de verdade</b>Seus dados ficam no seu aparelho, cadastro é opcional</li>
+      <li><b>Sem anúncios</b>Nada de propaganda interrompendo seu momento</li>
+      <li><b>Prático, não só leitura</b>Timers, modo cozinha, lista de compras e registro de treino</li>
+      <li><b>Responsável</b>Chás com contraindicações, o app não promete milagre</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= BÔNUS ======================= -->
+<section id="bonus">
+  <div class="wrap">
+    <div class="rule"></div>
+    <div class="label">Bônus exclusivos</div>
+    <h2 class="center" style="margin-bottom:8px">Leve também, sem pagar a mais</h2>
+    <p class="center" style="margin-bottom:20px">Materiais extras que acompanham o seu acesso</p>
+  </div>
+
+  <div class="carousel">
+    <button class="car-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <div class="car-track" id="bonusTrack">
+      <div class="bonus-card">
+        <div class="bonus-img"><img src="assets/bonus1.jpg" alt="Ebook Cardápio de Bebidas" loading="lazy"></div>
+        <div class="bonus-info">
+          <span class="bonus-tag">Bônus 1</span>
+          <h3>Cardápio de Bebidas</h3>
+          <p>Chás, sucos e smoothies pra colorir o seu dia, com 36 chás, 8 sucos e 4 smoothies</p>
+          <div class="bonus-price">Incluso grátis <s>R$ 29</s></div>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <div class="bonus-img"><img src="assets/bonus2.jpg" alt="Ebook Fitoterápicos e Chás" loading="lazy"></div>
+        <div class="bonus-info">
+          <span class="bonus-tag">Bônus 2</span>
+          <h3>Fitoterápicos e Chás</h3>
+          <p>Guia prático das plantas e chás mais usados no dia a dia, com preparo e cuidados</p>
+          <div class="bonus-price">Incluso grátis <s>R$ 29</s></div>
+        </div>
+      </div>
+    </div>
+    <button class="car-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  </div>
+  <div class="car-dots" id="bonusDots"></div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= OFERTA ======================= -->
+<section id="COMPRAR">
+  <div class="wrap">
+    <div class="rule"></div>
+    <h2 class="center">Leve o seu guia hoje</h2>
+    <div class="oferta">
+      <!-- EDITAR: só deixe o "de" se for um valor real/honesto -->
+      <div class="de">de R$ 97</div>
+      <div class="por">por apenas</div>
+      <!-- EDITAR: preço -->
+      <div class="preco"><small>R$</small>37<small style="font-size:26px">,90</small></div>
+      <div class="unico">pagamento único · acesso vitalício</div>
+
+      <ul class="incluso">
+        <li>Os 4 pilares completos (Espírito &amp; Mente, Nutrição, Treino, Ferramentas)</li>
+        <li>Desafio de 30 dias com calendário de hábitos</li>
+        <li>Receitas, 10 chás e cardápios com modo cozinha e timer</li>
+        <li>Diário da manhã e provérbio do dia</li>
+        <li>Biblioteca de treino + registro offline</li>
+        <li>Bônus 1: Cardápio de Bebidas (chás, sucos e smoothies)</li>
+        <li>Bônus 2: Fitoterápicos e Chás (guia de plantas)</li>
+        <li>Atualizações incluídas, sem mensalidade</li>
+      </ul>
+
+      <a href="https://pay.kiwify.com.br/4UvcNMM" class="btn-green" onclick="track()">Quero acesso agora
+        <span class="sub">Liberação imediata após o pagamento</span>
+      </a>
+      <p class="cta-note">Pagamento seguro · Pix ou cartão</p>
+    </div>
+
+    <div class="garantia" style="margin-top:24px">
+      <div class="seal">7 DIAS</div>
+      <div>
+        <h3>Garantia incondicional de 7 dias</h3>
+        <p style="margin:0">Experimente sem risco, se não for pra você é só pedir o reembolso dentro de 7 dias e devolvemos 100% do valor, o risco é todo nosso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= COMO VOCÊ RECEBE ======================= -->
+<section>
+  <div class="wrap">
+    <div class="rule"></div>
+    <div class="label">Acesso imediato</div>
+    <h2 class="center" style="margin-bottom:8px">Como você recebe o material?</h2>
+    <p class="center" style="margin-bottom:24px">Tudo 100% digital, sem frete e sem espera</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Aprovação imediata</h3>
+        <p>Cartão e Pix liberam o seu acesso na hora</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Acesso no seu e-mail</h3>
+        <p>Você recebe o link de acesso com o guia e os bônus</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Instale como app no celular</h3>
+        <p>Abra o link no navegador do celular, toque no menu e escolha a opção "Adicionar à tela de início", pronto, o Mente e Corpo vira um ícone na sua tela igual a qualquer outro app, sem precisar baixar nada na loja</p>
+      </div>
+    </div>
+
+    <a href="https://pay.kiwify.com.br/4UvcNMM" class="btn-green steps-cta" onclick="track()">Quero meu acesso agora</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= FAQ ======================= -->
+<section class="surface">
+  <div class="wrap">
+    <div class="rule"></div>
+    <h2 class="center">Perguntas frequentes</h2>
+
+    <details open>
+      <summary>Como recebo o acesso depois de comprar?</summary>
+      <p>Assim que o pagamento é confirmado, você recebe o acesso no seu e-mail e já pode começar a usar no celular [AJUSTE conforme seu checkout]</p>
+    </details>
+    <details>
+      <summary>Preciso de internet pra usar?</summary>
+      <p>Não, o app funciona offline, dá pra usar em qualquer lugar, a internet só é necessária em momentos pontuais, como baixar atualizações</p>
+    </details>
+    <details>
+      <summary>Meus dados ficam guardados onde?</summary>
+      <p>No seu próprio aparelho, seu diário, treinos e progresso ficam com você, o cadastro é opcional</p>
+    </details>
+    <details>
+      <summary>Os chás e as dicas substituem orientação médica?</summary>
+      <p>Não, o conteúdo é educativo e de apoio ao bem-estar, os chás trazem avisos de contraindicação e o app não promete cura nem milagre, sempre converse com seu médico, especialmente durante um tratamento</p>
+    </details>
+    <details>
+      <summary>Serve pra mim se eu só quero a parte espiritual (ou só a de saúde)?</summary>
+      <p>Serve, você usa os pilares que fizerem sentido pra sua fase, mas o diferencial é ter corpo, mente e espírito no mesmo lugar</p>
+    </details>
+    <details>
+      <summary>E se eu não gostar?</summary>
+      <p>Você tem 7 dias de garantia, se não for pra você devolvemos 100% do valor, sem burocracia</p>
+    </details>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ======================= CTA FINAL ======================= -->
+<section style="text-align:center">
+  <div class="wrap">
+    <div class="rule"></div>
+    <h2>Comece hoje a cuidar de você por inteiro</h2>
+    <p>Corpo, mente e espírito, num roteiro simples, pra usar todo dia</p>
+    <p class="aviso" style="margin-top:24px">
+      Este app é um guia de bem-estar e vida espiritual com fins educativos, não substitui acompanhamento médico, psicológico ou nutricional, e não promete cura ou resultado garantido
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="color:var(--silver)"><strong>Mente e Corpo</strong> Guia de Saúde e Vida Espiritual</p>
+    <p>Desenvolvido por Abraoteck · <a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a> · <a href="#">Contato</a></p>
+    <p style="margin-top:6px">© 2026 Todos os direitos reservados, este site não é afiliado ao Facebook, Instagram ou TikTok</p>
+  </div>
+</footer>
+
+<script>
+  function track(){
+    try{ if(window.fbq) fbq('track','InitiateCheckout'); }catch(e){}
+    try{ if(window.ttq) ttq.track('ClickButton'); }catch(e){}
+  }
+
+  // Animação de entrada dos celulares
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+    var io = new IntersectionObserver(function(entries,obs){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+    },{threshold:.2});
+    els.forEach(function(e){ io.observe(e); });
+  })();
+
+  // Carrosséis (pilares e bônus) com passagem automática a cada 5s
+  function initCarousel(track){
+    var carousel = track.closest('.carousel');
+    var dotsWrap = carousel ? carousel.nextElementSibling : null;
+    var slides = Array.prototype.slice.call(track.children);
+    var prev = carousel ? carousel.querySelector('.car-arrow.prev') : null;
+    var next = carousel ? carousel.querySelector('.car-arrow.next') : null;
+    if(!dotsWrap || slides.length<1) return;
+
+    // cria os pontos
+    slides.forEach(function(_, i){
+      var b = document.createElement('button');
+      b.setAttribute('aria-label','Ir para o item '+(i+1));
+      if(i===0) b.className='active';
+      b.addEventListener('click', function(){ scrollToSlide(i); start(); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = dotsWrap.querySelectorAll('button');
+
+    function slideStep(){
+      if(slides.length<2) return track.clientWidth;
+      return slides[1].getBoundingClientRect().left - slides[0].getBoundingClientRect().left;
+    }
+    function current(){ return Math.round(track.scrollLeft / slideStep()); }
+    function setActive(c){ dots.forEach(function(d,i){ d.classList.toggle('active', i===c); }); }
+    function scrollToSlide(i){
+      i = Math.max(0, Math.min(slides.length-1, i));
+      setActive(i);
+      track.scrollTo({left: i*slideStep(), behavior:'smooth'});
+    }
+    function update(){ setActive(current()); }
+
+    if(prev) prev.addEventListener('click', function(){ scrollToSlide(current()-1); start(); });
+    if(next) next.addEventListener('click', function(){ scrollToSlide(current()+1); start(); });
+    track.addEventListener('scroll', update, {passive:true});
+    window.addEventListener('resize', update);
+
+    var timer;
+    function nextAuto(){ var c = current(); scrollToSlide(c >= slides.length-1 ? 0 : c+1); }
+    function start(){ stop(); if(slides.length>1) timer = setInterval(nextAuto, 5000); }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+
+    ['mouseenter','touchstart','pointerdown'].forEach(function(ev){ track.addEventListener(ev, stop, {passive:true}); });
+    ['mouseleave','touchend'].forEach(function(ev){ track.addEventListener(ev, function(){ setTimeout(start, 600); }, {passive:true}); });
+    document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+
+    start();
+  }
+  document.querySelectorAll('.car-track').forEach(initCarousel);
+</script>
+
+</body>
+</html>
