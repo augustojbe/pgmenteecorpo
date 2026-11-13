@@ -117,11 +117,13 @@
   .hero h1 span{color:var(--green)}
   .hero-sub{font-size:16px;color:var(--silver);max-width:480px;margin:14px auto 28px}
   .hero-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
-  .hero-mockup{margin-top:30px;display:flex;justify-content:center;position:relative}
+  .hero-mockup{margin-top:30px;display:flex;justify-content:center;position:relative;perspective:1200px}
   .hero-mockup::before{content:"";position:absolute;top:50%;left:50%;width:78%;height:72%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(30,215,96,.25),transparent 68%);filter:blur(34px);z-index:0;pointer-events:none}
-  .hero-mockup img{position:relative;z-index:1;width:100%;max-width:390px;height:auto;border-radius:16px;box-shadow:var(--shadow-heavy);animation:floaty 4.5s ease-in-out infinite}
+  .hero-tilt{position:relative;z-index:1;width:100%;max-width:390px;transform-style:preserve-3d;transition:transform .18s ease-out;animation:sway 7s ease-in-out infinite;will-change:transform}
+  .hero-mockup img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:var(--shadow-heavy);animation:floaty 4.5s ease-in-out infinite}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-  @media (prefers-reduced-motion:reduce){.hero-mockup img{animation:none}}
+  @keyframes sway{0%,100%{transform:rotateY(-8deg) rotateX(4deg)}50%{transform:rotateY(8deg) rotateX(-2deg)}}
+  @media (prefers-reduced-motion:reduce){.hero-mockup img{animation:none}.hero-tilt{animation:none;transform:none}}
   .hero-cta{max-width:420px;margin:24px auto 0}
   .badge{
     background:var(--mid);border-radius:500px;padding:7px 14px;font-size:12px;font-weight:600;
@@ -303,8 +305,8 @@
       <span class="badge"><b>Acesso vitalício</b></span>
     </div>
 
-    <div class="hero-mockup">
-      <img src="assets/mockup-app.webp" alt="App Mente e Corpo no celular e no computador" loading="lazy">
+    <div class="hero-mockup" id="heroMockup">
+      <div class="hero-tilt"><img src="assets/mockup-app.webp" alt="App Mente e Corpo no celular e no computador" loading="lazy"></div>
     </div>
 
     <a href="#COMPRAR" class="btn-green hero-cta">Quero começar hoje
@@ -749,6 +751,28 @@
     start();
   }
   document.querySelectorAll('.car-track').forEach(initCarousel);
+
+  // Tilt 3D no mockup do hero (desktop); no mobile fica o balanço automático
+  (function(){
+    var box = document.getElementById('heroMockup');
+    if(!box) return;
+    var tilt = box.querySelector('.hero-tilt');
+    if(!tilt) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var hasFinePointer = window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    if(reduce || !hasFinePointer) return; // mobile/touch mantém o CSS sway
+    box.addEventListener('mousemove', function(e){
+      var r = box.getBoundingClientRect();
+      var px = (e.clientX - (r.left + r.width/2)) / (r.width/2);
+      var py = (e.clientY - (r.top + r.height/2)) / (r.height/2);
+      tilt.style.animation = 'none';
+      tilt.style.transform = 'rotateY('+(px*14)+'deg) rotateX('+(-py*10)+'deg) translateZ(30px)';
+    });
+    box.addEventListener('mouseleave', function(){
+      tilt.style.transform = '';
+      tilt.style.animation = '';
+    });
+  })();
 
   // Showcase 3D "Veja o app por dentro"
   (function(){
