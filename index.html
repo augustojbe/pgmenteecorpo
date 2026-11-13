@@ -263,6 +263,21 @@
   .showcase h2{margin:10px 0 6px}
   .showcase .lede{color:var(--silver);font-size:15px;max-width:460px;margin:0 auto}
   .car-track .app-slide{flex:0 0 100%;scroll-snap-align:center;display:flex;justify-content:center;margin-bottom:0;padding:6px 0}
+
+  /* ---- Showcase 3D (Veja o app por dentro) ---- */
+  .show3d{position:relative;z-index:1;max-width:var(--maxw);margin:34px auto 0;padding:0 20px}
+  .s3d-stage{position:relative;height:480px;perspective:1500px;transform-style:preserve-3d}
+  .card3d{position:absolute;left:50%;top:50%;width:220px;margin:0;transform:translate(-50%,-50%);transform-style:preserve-3d;transition:transform .55s cubic-bezier(.22,.7,.2,1),opacity .55s ease;cursor:pointer;will-change:transform,opacity}
+  .c3d-tilt{transform-style:preserve-3d;transition:transform .14s ease-out}
+  .card3d .phone{width:220px;max-width:62vw;margin:0}
+  .s3d-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:42px;height:42px;border-radius:50%;border:none;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;display:none;align-items:center;justify-content:center;transition:.2s;backdrop-filter:blur(6px)}
+  .s3d-arrow:hover{background:var(--green);color:#000}
+  .s3d-arrow.prev{left:0}.s3d-arrow.next{right:0}
+  .s3d-arrow svg{width:18px;height:18px}
+  @media (min-width:760px){.s3d-arrow{display:flex}}
+  .s3d-dots{display:flex;gap:8px;justify-content:center;margin-top:20px;position:relative;z-index:1}
+  .s3d-dots button{width:8px;height:8px;border-radius:50%;border:none;background:var(--mid);cursor:pointer;padding:0;transition:.25s}
+  .s3d-dots button.active{background:var(--green);width:22px;border-radius:4px}
   .phone{width:230px;max-width:72vw;background:#0b0b0b;border:1px solid rgba(255,255,255,.12);border-radius:30px;padding:7px;box-shadow:0 30px 60px -28px rgba(0,0,0,.8);position:relative}
   .phone::before{content:"";position:absolute;top:13px;left:50%;transform:translateX(-50%);width:44px;height:5px;background:#000;border-radius:5px;z-index:2}
   .screen{background:#1d1d1d;border-radius:24px;overflow:hidden;aspect-ratio:9/19.5}
@@ -342,16 +357,16 @@
     <h2>Veja o app por dentro</h2>
     <p class="lede">Rápido de usar, bonito de acompanhar, tudo no seu celular, até offline</p>
   </div>
-  <div class="carousel">
-    <button class="car-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-    <div class="car-track" id="appTrack">
-      <div class="app-slide"><div class="phone"><div class="screen"><img src="assets/tela1.webp" alt="Tela inicial do app com roteiro do dia e provérbio" loading="lazy"></div></div></div>
-      <div class="app-slide"><div class="phone"><div class="screen"><img src="assets/tela2.webp" alt="Seção de saúde, nutrição, calculadoras e treino" loading="lazy"></div></div></div>
-      <div class="app-slide"><div class="phone"><div class="screen"><img src="assets/tela3.webp" alt="Área de alimentação com receitas, chás e água do dia" loading="lazy"></div></div></div>
+  <div class="show3d" id="show3d">
+    <button class="s3d-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <div class="s3d-stage" id="s3dStage">
+      <div class="card3d"><div class="c3d-tilt"><div class="phone"><div class="screen"><img src="assets/tela1.webp" alt="Tela inicial do app com roteiro do dia e provérbio" loading="lazy"></div></div></div></div>
+      <div class="card3d"><div class="c3d-tilt"><div class="phone"><div class="screen"><img src="assets/tela2.webp" alt="Seção de saúde, nutrição, calculadoras e treino" loading="lazy"></div></div></div></div>
+      <div class="card3d"><div class="c3d-tilt"><div class="phone"><div class="screen"><img src="assets/tela3.webp" alt="Área de alimentação com receitas, chás e água do dia" loading="lazy"></div></div></div></div>
     </div>
-    <button class="car-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+    <button class="s3d-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
   </div>
-  <div class="car-dots" id="appDots"></div>
+  <div class="s3d-dots" id="s3dDots"></div>
   <ul class="pills">
     <li>Rotina da manhã</li>
     <li>Receitas &amp; chás</li>
@@ -734,6 +749,106 @@
     start();
   }
   document.querySelectorAll('.car-track').forEach(initCarousel);
+
+  // Showcase 3D "Veja o app por dentro"
+  (function(){
+    var stage = document.getElementById('s3dStage');
+    var wrap  = document.getElementById('show3d');
+    var dotsWrap = document.getElementById('s3dDots');
+    if(!stage || !wrap) return;
+
+    var cards = Array.prototype.slice.call(stage.querySelectorAll('.card3d'));
+    var n = cards.length;
+    if(n < 1) return;
+
+    var active = 0, hovering = false, tiltX = 0, tiltY = 0, timer = null;
+    var GAP = 150, MAXROT = 16;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+    // dots
+    cards.forEach(function(_, i){
+      var b = document.createElement('button');
+      b.setAttribute('aria-label','Ver tela '+(i+1));
+      b.addEventListener('click', function(){ go(i); restart(); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = dotsWrap.querySelectorAll('button');
+
+    function layout(){
+      var step = Math.min(GAP, (stage.clientWidth*0.42));
+      cards.forEach(function(card, i){
+        var d = i - active;
+        if(d >  n/2) d -= n;
+        if(d < -n/2) d += n;
+        var abs = Math.abs(d);
+        var x = d * step;
+        var scale = d===0 ? 1 : 0.8 - Math.min(abs,2)*0.05;
+        var sideRot = d===0 ? 0 : (d<0 ? 30 : -30);
+        var tz = d===0 ? 0 : -160;
+        var op = abs>2 ? 0 : 1 - abs*0.3;
+        card.style.transform = 'translate(-50%,-50%) translateX('+x+'px) translateZ('+tz+'px) rotateY('+sideRot+'deg) scale('+scale+')';
+        card.style.opacity = op;
+        card.style.zIndex = 100 - abs;
+        card.style.pointerEvents = abs>1 ? 'none' : 'auto';
+        var tilt = card.querySelector('.c3d-tilt');
+        if(tilt){
+          if(d===0 && hovering && !reduce){
+            tilt.style.transform = 'translateZ(50px) rotateY('+tiltY+'deg) rotateX('+tiltX+'deg)';
+          } else {
+            tilt.style.transform = 'translateZ(0) rotateY(0) rotateX(0)';
+          }
+        }
+        if(!card._bound){
+          card._bound = true;
+          card.addEventListener('click', function(){ if(i!==active){ go(i); restart(); } });
+        }
+      });
+      dots.forEach && dots.forEach(function(dd,i){ dd.classList.toggle('active', i===active); });
+      for(var k=0;k<dots.length;k++){ dots[k].classList.toggle('active', k===active); }
+    }
+
+    function go(i){ active = (i % n + n) % n; layout(); }
+    function next(){ go(active+1); }
+    function prev(){ go(active-1); }
+
+    function start(){ stop(); if(!reduce && n>1) timer = setInterval(next, 5000); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    function restart(){ start(); }
+
+    // tilt com o mouse
+    stage.addEventListener('mousemove', function(e){
+      if(reduce) return;
+      var r = stage.getBoundingClientRect();
+      var px = (e.clientX - (r.left + r.width/2)) / (r.width/2);
+      var py = (e.clientY - (r.top + r.height/2)) / (r.height/2);
+      tiltY = -px * MAXROT;
+      tiltX =  py * (MAXROT*0.6);
+      var tilt = cards[active].querySelector('.c3d-tilt');
+      if(tilt) tilt.style.transform = 'translateZ(50px) rotateY('+tiltY+'deg) rotateX('+tiltX+'deg)';
+    });
+    stage.addEventListener('mouseenter', function(){ hovering = true; stop(); });
+    stage.addEventListener('mouseleave', function(){ hovering = false; tiltX=tiltY=0; layout(); setTimeout(start,400); });
+
+    // setas
+    var pv = wrap.querySelector('.s3d-arrow.prev'), nx = wrap.querySelector('.s3d-arrow.next');
+    if(pv) pv.addEventListener('click', function(){ prev(); restart(); });
+    if(nx) nx.addEventListener('click', function(){ next(); restart(); });
+
+    // swipe
+    var sx = 0;
+    stage.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; stop(); }, {passive:true});
+    stage.addEventListener('touchend', function(e){
+      var diff = sx - e.changedTouches[0].clientX;
+      if(Math.abs(diff) > 40){ diff>0 ? next() : prev(); }
+      setTimeout(start, 600);
+    }, {passive:true});
+
+    window.addEventListener('resize', layout);
+    document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+
+    layout();
+    start();
+  })();
 </script>
 
 </body>
