@@ -151,6 +151,9 @@
   .dor li:last-child{border-bottom:none}
 
   /* ---- Pilares ---- */
+  .pilar-grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
+  @media (min-width:620px){.pilar-grid{grid-template-columns:1fr 1fr}}
+  .pilar-grid .pilar{margin-bottom:0;height:100%}
   .pilar{background:var(--surface);border-radius:8px;padding:22px;margin-bottom:14px;transition:background .2s}
   .pilar:hover{background:var(--card)}
   .pilar .ico{font-size:26px;margin-bottom:8px}
@@ -280,6 +283,11 @@
   .s3d-dots{display:flex;gap:8px;justify-content:center;margin-top:20px;position:relative;z-index:1}
   .s3d-dots button{width:8px;height:8px;border-radius:50%;border:none;background:var(--mid);cursor:pointer;padding:0;transition:.25s}
   .s3d-dots button.active{background:var(--green);width:22px;border-radius:4px}
+  /* variação da seção de depoimentos */
+  .proof-stage{height:520px}
+  .proof-stage .card3d{width:240px}
+  .card3d .proof{width:240px;max-width:68vw;margin:0}
+  .card3d .proof img{max-height:400px}
   .phone{width:230px;max-width:72vw;background:#0b0b0b;border:1px solid rgba(255,255,255,.12);border-radius:30px;padding:7px;box-shadow:0 30px 60px -28px rgba(0,0,0,.8);position:relative}
   .phone::before{content:"";position:absolute;top:13px;left:50%;transform:translateX(-50%);width:44px;height:5px;background:#000;border-radius:5px;z-index:2}
   .screen{background:#1d1d1d;border-radius:24px;overflow:hidden;aspect-ratio:9/19.5}
@@ -388,9 +396,8 @@
     <p class="center" style="margin-bottom:20px">4 pilares + ferramentas práticas, guiados dia após dia</p>
   </div>
 
-  <div class="carousel">
-    <button class="car-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-    <div class="car-track" id="pilarTrack">
+  <div class="wrap">
+    <div class="pilar-grid">
       <div class="pilar">
         <h3>Espírito e Mente</h3>
         <ul>
@@ -432,9 +439,7 @@
         </ul>
       </div>
     </div>
-    <button class="car-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
   </div>
-  <div class="car-dots" id="pilarDots"></div>
 </section>
 
 <hr class="divider">
@@ -461,25 +466,25 @@
 
   </div>
 
-  <div class="carousel">
-    <button class="car-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-    <div class="car-track" id="proofTrack">
-      <div class="proof">
+  <div class="show3d" id="show3dProof">
+    <button class="s3d-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <div class="s3d-stage proof-stage" id="s3dProofStage">
+      <div class="card3d"><div class="c3d-tilt"><div class="proof">
         <img src="assets/prova01.webp" alt="Mensagem de Maria sobre o app Mente e Corpo" loading="lazy">
         <div class="cap"><b>Maria</b> <span class="vf">✓ cliente</span></div>
-      </div>
-      <div class="proof">
+      </div></div></div>
+      <div class="card3d"><div class="c3d-tilt"><div class="proof">
         <img src="assets/prova02.webp" alt="Mensagem de Rafaela sobre as receitas e chás do app" loading="lazy">
         <div class="cap"><b>Rafaela</b> <span class="vf">✓ cliente</span></div>
-      </div>
-      <div class="proof">
+      </div></div></div>
+      <div class="card3d"><div class="c3d-tilt"><div class="proof">
         <img src="assets/prova04.webp" alt="Andreza Pereira usando o app Mente e Corpo, mostrando a tela do Desafio de 30 dias" loading="lazy">
         <div class="cap"><b>Andreza</b> <span class="vf">✓ cliente</span></div>
-      </div>
+      </div></div></div>
     </div>
-    <button class="car-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+    <button class="s3d-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
   </div>
-  <div class="car-dots" id="proofDots"></div>
+  <div class="s3d-dots" id="s3dProofDots"></div>
 
   <div class="wrap">
     <p class="small center" style="color:var(--muted);margin-top:16px">Depoimentos reais de clientes, publicados com autorização</p>
@@ -774,11 +779,11 @@
     });
   })();
 
-  // Showcase 3D "Veja o app por dentro"
-  (function(){
-    var stage = document.getElementById('s3dStage');
-    var wrap  = document.getElementById('show3d');
-    var dotsWrap = document.getElementById('s3dDots');
+  // Carrossel 3D reutilizável (showcase do app e depoimentos)
+  function build3D(stageId, wrapId, dotsId, aria){
+    var stage = document.getElementById(stageId);
+    var wrap  = document.getElementById(wrapId);
+    var dotsWrap = document.getElementById(dotsId);
     if(!stage || !wrap) return;
 
     var cards = Array.prototype.slice.call(stage.querySelectorAll('.card3d'));
@@ -792,7 +797,7 @@
     // dots
     cards.forEach(function(_, i){
       var b = document.createElement('button');
-      b.setAttribute('aria-label','Ver tela '+(i+1));
+      b.setAttribute('aria-label',(aria||'Ver item')+' '+(i+1));
       b.addEventListener('click', function(){ go(i); restart(); });
       dotsWrap.appendChild(b);
     });
@@ -872,7 +877,9 @@
 
     layout();
     start();
-  })();
+  }
+  build3D('s3dStage', 'show3d', 's3dDots', 'Ver tela');
+  build3D('s3dProofStage', 'show3dProof', 's3dProofDots', 'Ver depoimento');
 </script>
 
 </body>
