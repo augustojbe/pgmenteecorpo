@@ -234,6 +234,7 @@
   @media (min-width:760px){.car-arrow{display:flex}}
 
   /* ---- Cards de bônus ---- */
+  .bonus-stack{display:flex;flex-direction:column;gap:16px;max-width:460px;margin:0 auto}
   .bonus-card{background:var(--surface);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-med)}
   .bonus-img{background:linear-gradient(135deg,#1b2a20,#141414);display:flex;align-items:center;justify-content:center;padding:16px;min-height:220px}
   .bonus-img img{max-height:230px;width:auto;max-width:100%;border-radius:8px;object-fit:contain;display:block}
@@ -498,9 +499,8 @@
     <p class="center" style="margin-bottom:20px">Materiais extras que acompanham o seu acesso</p>
   </div>
 
-  <div class="carousel">
-    <button class="car-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-    <div class="car-track" id="bonusTrack">
+  <div class="wrap">
+    <div class="bonus-stack">
       <div class="bonus-card">
         <div class="bonus-img"><img src="assets/bonus1.jpg" alt="Ebook Cardápio de Bebidas" loading="lazy"></div>
         <div class="bonus-info">
@@ -521,9 +521,7 @@
         </div>
       </div>
     </div>
-    <button class="car-arrow next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
   </div>
-  <div class="car-dots" id="bonusDots"></div>
 </section>
 
 <hr class="divider">
