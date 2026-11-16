@@ -36,22 +36,9 @@
      4. Preco e garantia estao marcados com comentarios EDITAR no codigo.
 -->
 
-<!-- ===== Meta Pixel (Facebook) ===== -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1095252006715140');
-  fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1095252006715140&ev=PageView&noscript=1"/></noscript>
-<!-- ===== Fim do Meta Pixel ===== -->
+<!-- ===== Trackeamento próprio (substitui o Meta Pixel direto) ===== -->
+<script src="https://trackeamento.menteecorpo.app.br/tracker.js" async></script>
+<!-- ===== Fim do Trackeamento ===== -->
 
 <!-- >>> COLE AQUI O PIXEL DO TIKTOK (opcional) <<< -->
 <!-- ATENÇÃO: o Token da API de Conversão NÃO vai aqui. Ele é secreto e
@@ -579,7 +566,7 @@
         <li>Atualizações incluídas, sem mensalidade</li>
       </ul>
 
-      <a href="https://pay.kiwify.com.br/4UvcNMM" class="btn-green" onclick="track()">Quero meu acesso por R$ 37,90
+      <a href="https://pay.kiwify.com.br/4UvcNMM" class="btn-green" data-trck-product="Mente e Corpo" data-trck-value="37.90">Quero meu acesso por R$ 37,90
         <span class="sub">Liberação imediata após o pagamento</span>
       </a>
       <p class="cta-note">Pagamento seguro · Pix ou cartão</p>
@@ -623,7 +610,7 @@
       </div>
     </div>
 
-    <a href="https://pay.kiwify.com.br/4UvcNMM" class="btn-green steps-cta" onclick="track()">Quero meu acesso agora</a>
+    <a href="https://pay.kiwify.com.br/4UvcNMM" class="btn-green steps-cta" data-trck-product="Mente e Corpo" data-trck-value="37.90">Quero meu acesso agora</a>
   </div>
 </section>
 
@@ -692,11 +679,6 @@
 </footer>
 
 <script>
-  function track(){
-    try{ if(window.fbq) fbq('track','InitiateCheckout'); }catch(e){}
-    try{ if(window.ttq) ttq.track('ClickButton'); }catch(e){}
-  }
-
   // Animação de entrada dos celulares
   (function(){
     var els = document.querySelectorAll('.reveal');
